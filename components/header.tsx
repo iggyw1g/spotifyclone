@@ -1,7 +1,9 @@
 "use client";
 
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Children } from "react";
+import { HiHome } from "react-icons/hi";
+import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { twMerge } from "tailwind-merge";
 
 interface HeaderProps{
@@ -9,15 +11,15 @@ interface HeaderProps{
     className?: string;
 
 }
-
+//37:43 (im tired and i want to eat and i have to go for my run and shit so im going home 
 const Header: React.FC<HeaderProps> = ({
     children,
     className
 }) => {
     const router= useRouter();
-    const handleLogout = () => {
+    //function handleLogout() {
         //Handle logout in the future
-    }
+    //}
     return(
         <div className = {twMerge('h-fit bg-gradient-to-b from-emerald-800 p-g',
         className
@@ -31,8 +33,19 @@ const Header: React.FC<HeaderProps> = ({
             ">
 
             <div className= " hidden md:flex gap-x-2 items-center">
-
+                <button onClick = {() => router.back()} className = "rounded-full bg-black flex items-center justify-center hover:opacity-75 transition" >
+                    <RxCaretLeft className = "text-white" size = {35}/>
+                </button>
+                <button onClick = {() => router.forward()} className = "rounded-full bg-black flex items-center justify-center hover:opacity-75 transition" >
+                    <RxCaretRight className = "text-white" size = {35}/>
+                </button>
             </div>
+            <div className = "flex md:hidden gap-x-2 items-center">
+                <button className="rounded-full p-2 bg-white flex items-center justify-center hober:opacity-75 transition">
+                    <HiHome className="text-black" size={20}/>
+                    </button>
+            </div>
+        </div>
         </div>
         
     );
