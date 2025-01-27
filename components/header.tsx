@@ -11,7 +11,7 @@ interface HeaderProps{
     className?: string;
 
 }
-//37:43 (im tired and i want to eat and i have to go for my run 
+
 const Header: React.FC<HeaderProps> = ({
     children,
     className
